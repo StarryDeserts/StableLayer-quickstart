@@ -1,0 +1,4 @@
+packages:
+  - 'app'
+  # .sdk-reference/stable-layer-sdk 仅作为源码参考，不作为 workspace 成员
+  # SDK 通过 npm 安装: stable-layer-sdk@1.1.0

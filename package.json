@@ -1,0 +1,23 @@
+{
+  "name": "oneclick-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "OneClick DApp workspace with StableLayer SDK",
+  "scripts": {
+    "dev": "pnpm -C app dev",
+    "build": "pnpm -C app build",
+    "preview": "pnpm -C app preview"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@mysten/sui": "1.44.0"
+    }
+  },
+  "dependencies": {
+    "stable-layer-sdk": "^1.1.0"
+  }
+}

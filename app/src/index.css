@@ -1,0 +1,349 @@
+/* CSS Imports - Must be first */
+@import "tailwindcss";
+@import "@heroui/styles";
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800&display=swap');
+
+/* Tailwind v4 Theme Extensions */
+@theme {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-text-dim: var(--text-dim);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-gold: var(--gold);
+  --color-gold-2: var(--gold-2);
+  --color-purple: var(--purple);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+
+  /* Font families */
+  --font-heading: 'Orbitron', sans-serif;
+  --font-body: 'Exo 2', sans-serif;
+}
+
+/* ================================
+   Premium DeFi Dark Theme
+   Based on ui-ux-pro-max recommendations
+   Gold trust + Purple tech aesthetic
+   ================================ */
+
+:root {
+  /* Background - Deep slate OLED with subtle gradient */
+  --bg: #0F172A;
+  --bg-gradient-top: #1E293B;
+  --bg-gradient-bottom: #0F172A;
+
+  /* Surface - Glassmorphic layers with depth */
+  --surface: rgba(30, 41, 59, 0.5);
+  --surface-solid: #1E293B;
+  --surface-2: rgba(51, 65, 85, 0.3);
+  --surface-hover: rgba(51, 65, 85, 0.5);
+  --glass-blur: 20px;
+
+  /* Borders - Subtle with glow capability */
+  --border: rgba(148, 163, 184, 0.1);
+  --border-hover: rgba(148, 163, 184, 0.2);
+  --border-glow: rgba(245, 158, 11, 0.3);
+
+  /* Text hierarchy - High contrast for OLED */
+  --text: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
+
+  /* Gold - Primary brand (trust, value) */
+  --gold: #F59E0B;
+  --gold-2: #FBBF24;
+  --gold-glow: rgba(245, 158, 11, 0.3);
+  --gold-subtle: rgba(245, 158, 11, 0.1);
+
+  /* Purple - Tech accent (innovation, crypto) */
+  --purple: #8B5CF6;
+  --purple-2: #A78BFA;
+  --purple-glow: rgba(139, 92, 246, 0.3);
+  --purple-subtle: rgba(139, 92, 246, 0.1);
+
+  /* Legacy accent mapping (for backward compatibility) */
+  --accent: #8B5CF6;
+  --accent-2: #A78BFA;
+  --accent-glow: rgba(139, 92, 246, 0.3);
+  --accent-subtle: rgba(139, 92, 246, 0.1);
+
+  /* Semantic colors */
+  --success: #10B981;
+  --success-glow: rgba(16, 185, 129, 0.3);
+  --success-subtle: rgba(16, 185, 129, 0.1);
+  --warning: #F59E0B;
+  --warning-subtle: rgba(245, 158, 11, 0.1);
+  --danger: #EF4444;
+  --danger-subtle: rgba(239, 68, 68, 0.1);
+  --info: #38BDF8;
+  --info-subtle: rgba(56, 189, 248, 0.12);
+
+  /* Status-specific */
+  --status-done: #10B981;
+  --status-current: #8B5CF6;
+  --status-pending: #F59E0B;
+  --status-locked: #64748B;
+
+  /* Shadows & Glows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --glow-gold: 0 0 20px var(--gold-glow), 0 0 40px var(--gold-glow);
+  --glow-purple: 0 0 20px var(--purple-glow), 0 0 40px var(--purple-glow);
+  --glow-success: 0 0 20px var(--success-glow);
+}
+
+/* Global styles */
+html {
+  background: radial-gradient(ellipse at top, var(--bg-gradient-top) 0%, var(--bg) 50%, var(--bg-gradient-bottom) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+body {
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* Headings use Orbitron */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Scrollbar styling - Minimal glow effect */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface-2);
+  border-radius: 4px;
+  transition: background 200ms;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--surface-hover);
+}
+
+/* Glassmorphic card base */
+.glass-card {
+  background: var(--surface);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  transition: all 200ms ease-out;
+}
+
+.glass-card:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-lg);
+}
+
+/* HeroUI glass card surface */
+.card-glass {
+  background: var(--surface);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  transition: all 200ms ease-out;
+}
+
+.card-glass:hover {
+  transform: translateY(-1px);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-lg);
+}
+
+.glass-panel {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Form controls */
+.input-glass {
+  height: 3.25rem;
+  padding: 0 1rem;
+  border-radius: 1rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-weight: 500;
+  transition: all 200ms ease-out;
+}
+
+.input-glass::placeholder {
+  color: var(--text-dim);
+}
+
+.input-glass:focus {
+  border-color: var(--purple);
+  box-shadow: var(--glow-purple);
+  outline: none;
+}
+
+/* Buttons */
+.btn-gradient {
+  height: 3.25rem;
+  border-radius: 1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--purple) 100%) !important;
+  color: var(--bg) !important;
+  border: none !important;
+  box-shadow: var(--glow-gold);
+}
+
+.btn-gradient:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--glow-gold), 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+.btn-gradient[data-disabled="true"] {
+  background: var(--surface-2) !important;
+  color: var(--text-dim) !important;
+  box-shadow: none;
+  border: 1px solid var(--border) !important;
+  transform: none;
+}
+
+.btn-soft {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+}
+
+.btn-soft:hover {
+  border-color: var(--border-hover) !important;
+  background: var(--surface-hover) !important;
+}
+
+.btn-ghost {
+  color: var(--text-muted) !important;
+}
+
+.btn-ghost:hover {
+  color: var(--text) !important;
+  background: var(--surface-2) !important;
+}
+
+/* Chips */
+.chip-success {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.chip-error {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--danger);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
+
+.chip-pending {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--warning);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+/* Key/Value grid */
+.kv-label {
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.kv-value {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Digest */
+.digest-pill {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color: var(--text);
+}
+
+.tooltip-glass {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--border);
+  color: var(--text);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Glow effects for interactive elements */
+.glow-gold {
+  box-shadow: var(--glow-gold);
+}
+
+.glow-purple {
+  box-shadow: var(--glow-purple);
+}
+
+.glow-success {
+  box-shadow: var(--glow-success);
+}
+
+/* Smooth transitions for all interactive elements */
+button, a, [role="button"] {
+  transition: all 200ms ease-out;
+  cursor: pointer;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Premium ConnectButton CTA styles - Override dapp-kit default */
+.wallet-connect-wrapper button {
+  height: 44px !important;
+  padding: 0 24px !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--purple) 100%) !important;
+  border: none !important;
+  color: var(--bg) !important;
+  box-shadow: var(--glow-gold) !important;
+  transition: all 200ms ease-out !important;
+  cursor: pointer !important;
+}
+
+.wallet-connect-wrapper button:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: var(--glow-gold), 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+.wallet-connect-wrapper button:active {
+  transform: translateY(0) !important;
+}
