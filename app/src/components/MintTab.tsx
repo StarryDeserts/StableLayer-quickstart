@@ -73,7 +73,7 @@ export function MintTab({ onSuccess }: MintTabProps) {
           placeholder="Enter amount (e.g. 10.5)"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
-          isDisabled={isLoading || !isConfigured}
+          disabled={isLoading || !isConfigured}
           className="input-glass"
         />
         {!isConfigured && (

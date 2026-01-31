@@ -6,7 +6,7 @@
  */
 
 import { useState } from 'react'
-import { Button, Input, Chip } from '@heroui/react'
+import { Button, Input, Chip, Tooltip } from '@heroui/react'
 import { useAppStore } from '../lib/store'
 import { buildRedeemTx } from '../lib/stablelayer/adapter'
 import { isBrandConfigured } from '../config/brands'
@@ -101,7 +101,7 @@ export function RedeemTab({ onSuccess }: RedeemTabProps) {
           placeholder="Enter amount (e.g. 1.0)"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
-          isDisabled={isLoading || !isConfigured}
+          disabled={isLoading || !isConfigured}
           className="input-glass"
         />
         {!isConfigured && (
@@ -169,14 +169,32 @@ export function RedeemTab({ onSuccess }: RedeemTabProps) {
       </div>
 
       {/* Primary CTA Button */}
-      <Button
-        className="btn-gradient w-full"
-        isDisabled={!canSubmit}
-        onPress={handleRedeem}
-        title={disabledReason}
-      >
-        {isLoading ? getLoadingText(state) : 'Redeem (T+1)'}
-      </Button>
+      {disabledReason && !canSubmit ? (
+        <Tooltip>
+          <Tooltip.Trigger className="w-full">
+            <span className="w-full inline-flex" aria-disabled="true">
+              <Button
+                className="btn-gradient w-full"
+                isDisabled
+                onPress={handleRedeem}
+              >
+                {isLoading ? getLoadingText(state) : 'Redeem (T+1)'}
+              </Button>
+            </span>
+          </Tooltip.Trigger>
+          <Tooltip.Content className="tooltip-glass" showArrow>
+            {disabledReason}
+          </Tooltip.Content>
+        </Tooltip>
+      ) : (
+        <Button
+          className="btn-gradient w-full"
+          isDisabled={!canSubmit}
+          onPress={handleRedeem}
+        >
+          {isLoading ? getLoadingText(state) : 'Redeem (T+1)'}
+        </Button>
+      )}
 
       {/* Disabled Reason Display */}
       {disabledReason && !canSubmit && !isLoading && (
